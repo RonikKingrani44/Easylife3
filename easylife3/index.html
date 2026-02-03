@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyLife - Your City's Service Experts, Just a Tap Away</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A2D;
+            --secondary: #FF8C42;
+            --accent: #FFB627;
+            --accent-light: #FFD97A;
+            --bg-cream: #FFFBF5;
+            --bg-light: #FFF5E6;
+            --text-dark: #2D1F1A;
+            --text-medium: #5C3D2E;
+            --text-light: #8B5A3C;
+            --white: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --border: #FFE4CC;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        nav {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+            border-color: var(--white);
+        }
+
+        .mobile-menu {
+            display: block;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 3rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta .btn {
+            text-align: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .stat-item h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .hero-visual {
+            display: none;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+            transition: transform 0.3s;
+            object-fit: cover;
+        }
+
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+        .mission-section {
+            background: var(--bg-light);
+            padding: 4rem 1.5rem;
+        }
+
+        .mission-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .mission-badge {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .mission-content h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            font-weight: 800;
+        }
+
+        .mission-content h2 span {
+            color: var(--primary);
+        }
+
+        .mission-quote {
+            border-left: 4px solid var(--primary);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .mission-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mission-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .mission-check {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        .mission-stats {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .mission-emergency {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-emergency h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mission-emergency p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .mission-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .mission-stat h4 {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .mission-stat p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .services-section {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.08);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(255, 107, 53, 0.15);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--border) 100%);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .service-link:hover {
+            gap: 0.8rem;
+        }
+
+        .how-it-works {
+            background: var(--bg-light);
+            padding: 4rem 1.5rem;
+        }
+
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 24px;
+            text-align: center;
+            position: relative;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 4px solid var(--bg-light);
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+        }
+
+        .step-icon {
+            width: 100%;
+            height: 150px;
+            margin: 1rem 0;
+            border-radius: 16px;
+            object-fit: cover;
+            background: var(--bg-light);
+        }
+
+        .step-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .step-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .safety-section {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .safety-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .safety-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .safety-content > p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .safety-features {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .safety-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .safety-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .safety-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .safety-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+
+        .safety-text p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .safety-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .safety-image {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            object-fit: cover;
+        }
+        .app-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 4rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-content p {
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .app-btn {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 1rem 1.8rem;
+            border-radius: 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .app-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .app-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .easylife-app-screen {
+            width: 100%;
+            max-width: 300px;
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border: 10px solid #1a1a1a;
+            margin: 0 auto;
+        }
+
+        .app-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1.5rem;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .app-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .app-services {
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .app-service-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            border: 1px solid var(--border);
+        }
+
+        .app-service-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .app-bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            font-size: 1.2rem;
+        }
+        .partners-section {
+            padding: 4rem 1.5rem;
+            background: var(--bg-light);
+        }
+
+        .partners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partner-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        .partner-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--border) 100%);
+        }
+
+        .partner-content {
+            padding: 2rem;
+        }
+
+        .partner-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .partner-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .partner-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .partner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        .cities-section {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 1.5rem;
+        }
+
+        .cities-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .city-item {
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .city-item:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+        footer {
+            background: #1a1512;
+            color: var(--white);
+            padding: 4rem 1.5rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-copy {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        .floating-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.98);
+            padding: 1rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 1rem;
+            z-index: 999;
+          
+        }
+
+        .floating-cta .btn {
+            flex: 1;
+            text-align: center;
+            padding: 0.9rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+
+            .hero-cta {
+                flex-direction: row;
+            }
+
+            .mission-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .safety-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .app-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cities-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .floating-cta {
+                display: none;
+            }
+        }
+        @media (min-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .hero-visual {
+                display: block;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                EasyLife
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How it Works</a></li>
+                <li><a href="#safety">Safety</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="#cities">Cities</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#" class="btn btn-outline">Log in</a>
+                <a href="#" class="btn btn-white">Get the App</a>
+            </div>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content animate">
+                <h1>Your City's Service Experts, Just a Tap Away</h1>
+                <p>Connect with verified mechanics, plumbers, electricians, and handymen in Pakistan. Fast, reliable, and transparent service at your doorstep.</p>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-white">Get the App</a>
+                    <a href="#" class="btn btn-outline">Request Service</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Verified Experts</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50k+</h3>
+                        <p>Services Done</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>4.9</h3>
+                        <p>User Rating</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=800&fit=crop" alt="Mechanic working on bike" class="hero-image">
+            </div>
+        </div>
+    </section>
+    <section class="mission-section">
+        <div class="mission-container">
+            <div class="mission-content animate">
+                <span class="mission-badge">Our Mission</span>
+                <h2>No Pakistani Should Ever Feel <span>Stranded</span></h2>
+                <div class="mission-quote">
+                    "Our mission is simple: no Pakistani should ever feel stranded when they need help. Whether it's a bike breakdown on Shahrah-e-Faisal or a leaking pipe at midnight, EasyLife ensures help is always just a tap away."
+                </div>
+                <div class="mission-features">
+                    <div class="mission-feature-item">
+                        <div class="mission-check">✓</div>
+                        <span>24/7 Emergency Support Available</span>
+                    </div>
+                    <div class="mission-feature-item">
+                        <div class="mission-check">✓</div>
+                        <span>Verified Professionals Only</span>
+                    </div>
+                    <div class="mission-feature-item">
+                        <div class="mission-check">✓</div>
+                        <span>Coverage Across All Major Cities</span>
+                    </div>
+                    <div class="mission-feature-item">
+                        <div class="mission-check">✓</div>
+                        <span>Fair Pricing, No Hidden Costs</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mission-stats animate">
+                <div class="mission-emergency">
+                    <h3>🚨 Emergency Response</h3>
+                    <p>Average response time of 15 minutes for roadside assistance</p>
+                </div>
+                <div class="mission-stats-grid">
+                    <div class="mission-stat">
+                        <h4>24/7</h4>
+                        <p>Support Available</p>
+                    </div>
+                    <div class="mission-stat">
+                        <h4>15min</h4>
+                        <p>Emergency Response</p>
+                    </div>
+                    <div class="mission-stat">
+                        <h4>100%</h4>
+                        <p>Verified Pros</p>
+                    </div>
+                    <div class="mission-stat">
+                        <h4>0</h4>
+                        <p>Hidden Fees</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Professional help for all your daily needs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card animate">
+                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=400&h=300&fit=crop" alt="Bike Mechanic" class="service-image">
+                <div class="service-content">
+                    <div class="service-icon">🚗</div>
+                    <h3>Automotive</h3>
+                    <p>Roadside bike/car repair, puncture service, and emergency assistance anywhere in the city.</p>
+                </div>
+            </div>
+            <div class="service-card animate">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop" alt="Electrician at work" class="service-image">
+                <div class="service-content">
+                    <div class="service-icon">⚡</div>
+                    <h3>Electrical</h3>
+                    <p>AC repair, wiring solutions, and appliance fixing by certified electricians.</p>
+                </div>
+            </div>
+            <div class="service-card animate">
+                <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=400&h=300&fit=crop" alt="Plumber working" class="service-image">
+                <div class="service-content">
+                    <div class="service-icon">🔧</div>
+                    <h3>Plumbing</h3>
+                    <p>Leakage repair, pipe fitting, and water tank cleaning services.</p>
+                </div>
+            </div>
+            <div class="service-card animate">
+                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop" alt="Carpenter working" class="service-image">
+                <div class="service-content">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Handyman</h3>
+                    <p>Carpentry, painting, and general home maintenance tasks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="how-it-works" id="how-it-works">
+        <div class="steps-container">
+            <div class="section-header">
+                <h2>How EasyLife Works</h2>
+                <p>Get service in 4 simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card animate">
+                    <div class="step-number">1</div>
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=300&h=200&fit=crop" alt="Open App" class="step-icon">
+                    <h3>Search Service</h3>
+                    <p>Select the service you need from our comprehensive list</p>
+                </div>
+                <div class="step-card animate">
+                    <div class="step-number">2</div>
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=300&h=200&fit=crop" alt="Find Professional" class="step-icon">
+                    <h3>Match with Pros</h3>
+                    <p>See nearby available professionals with ratings and reviews</p>
+                </div>
+                <div class="step-card animate">
+                    <div class="step-number">3</div>
+                    <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=300&h=200&fit=crop" alt="Book Service" class="step-icon">
+                    <h3>Book & Contact</h3>
+                    <p>Contact directly or book through the app seamlessly</p>
+                </div>
+                <div class="step-card animate">
+                    <div class="step-number">4</div>
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=300&h=200&fit=crop" alt="Service Complete" class="step-icon">
+                    <h3>Service & Review</h3>
+                    <p>Get the job done and rate your experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="safety-section" id="safety">
+        <div class="safety-grid">
+            <div class="safety-content animate">
+                <h2>Safety First, Always</h2>
+                <p>Your security is our top priority. Every service provider on our platform goes through rigorous verification.</p>
+                <div class="safety-features">
+                    <div class="safety-item">
+                        <div class="safety-icon">🛡️</div>
+                        <div class="safety-text">
+                            <h4>CNIC Verified</h4>
+                            <p>All providers undergo strict identity verification</p>
+                        </div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-icon">📍</div>
+                        <div class="safety-text">
+                            <h4>Real-time Tracking</h4>
+                            <p>Track your service provider's location in real-time</p>
+                        </div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-icon">💰</div>
+                        <div class="safety-text">
+                            <h4>Transparent Pricing</h4>
+                            <p>Fixed rates with no hidden charges or negotiations</p>
+                        </div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-icon">⭐</div>
+                        <div class="safety-text">
+                            <h4>Rating System</h4>
+                            <p>Honest reviews ensure quality service every time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="safety-visual">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&h=600&fit=crop" alt="Verified Electrician with Yellow Hard Hat" class="safety-image">
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section">
+        <div class="app-container">
+            <div class="app-content animate">
+                <h2>Download EasyLife App</h2>
+                <p>Get up to 15% off your first service. Available on iOS and Android devices.</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <span>🍎</span>
+                        <div>
+                            <div style="font-size: 0.7rem;">Download on</div>
+                            <div style="font-weight: 600;">App Store</div>
+                        </div>
+                    </a>
+                    <a href="#" class="app-btn">
+                        <span>▶️</span>
+                        <div>
+                            <div style="font-size: 0.7rem;">Get it on</div>
+                            <div style="font-weight: 600;">Google Play</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="app-visual">
+             
+                <div class="easylife-app-screen">
+                    <div class="app-header">
+                        <div class="app-logo">
+                            <span>⚡</span>
+                            <span>EasyLife</span>
+                        </div>
+                        <div class="app-subtitle">Your Service Experts</div>
+                    </div>
+                    <div class="app-services">
+                        <div class="app-service-item">
+                            <div class="app-service-icon">🚗</div>
+                            <div>Automotive</div>
+                        </div>
+                        <div class="app-service-item">
+                            <div class="app-service-icon">⚡</div>
+                            <div>Electrical</div>
+                        </div>
+                        <div class="app-service-item">
+                            <div class="app-service-icon">🔧</div>
+                            <div>Plumbing</div>
+                        </div>
+                        <div class="app-service-item">
+                            <div class="app-service-icon">🛠️</div>
+                            <div>Handyman</div>
+                        </div>
+                    </div>
+                    <div style="padding: 0 1rem 1rem;">
+                        <div style="background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%); color: white; padding: 1rem; border-radius: 12px; text-align: center; font-weight: 600;">
+                            Book Now
+                        </div>
+                    </div>
+                    <div class="app-bottom-nav">
+                        <span>🏠</span>
+                        <span>🔍</span>
+                        <span>📋</span>
+                        <span>👤</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="partners-section" id="partners">
+        <div class="partners-container">
+            <div class="section-header">
+                <h2>Join EasyLife</h2>
+                <p>Earn with us or partner with us</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-card animate">
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop" alt="Team Meeting" class="partner-image">
+                    <div class="partner-content">
+                        <h3>Become a Service Provider</h3>
+                        <p>Join our network of verified experts. Get consistent leads and grow your business with EasyLife.</p>
+                        <a href="#" class="partner-btn">Sign up as Provider</a>
+                    </div>
+                </div>
+                <div class="partner-card animate">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop" alt="Partner Store" class="partner-image">
+                    <div class="partner-content">
+                        <h3>Partner with Us</h3>
+                        <p>Own a hardware store or spare parts business? Advertise to our growing customer base.</p>
+                        <a href="#" class="partner-btn">Advertise with Us</a>
+                    </div>
+                </div>
+                <div class="partner-card animate">
+                    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&h=300&fit=crop" alt="Roadside Assistance" class="partner-image">
+                    <div class="partner-content">
+                        <h3>Safety First Plan</h3>
+                        <p>Get 24/7 roadside assistance with our premium subscription. Never worry about breakdowns.</p>
+                        <a href="#" class="partner-btn">View Plans</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cities-section" id="cities">
+        <div class="cities-container">
+            <div class="section-header" style="color: white;">
+                <h2>Available Cities</h2>
+                <p style="color: rgba(255,255,255,0.8);">We're expanding across Pakistan</p>
+            </div>
+            <div class="cities-grid">
+                <div class="city-item">Karachi</div>
+                <div class="city-item">Lahore</div>
+                <div class="city-item">Islamabad</div>
+                <div class="city-item">Rawalpindi</div>
+                <div class="city-item">Faisalabad</div>
+                <div class="city-item">Multan</div>
+                <div class="city-item">Peshawar</div>
+                <div class="city-item">Quetta</div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Automotive</a></li>
+                        <li><a href="#">Electrical</a></li>
+                        <li><a href="#">Plumbing</a></li>
+                        <li><a href="#">Handyman</a></li>
+                        <li><a href="#">AC Repair</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>For Providers</h4>
+                    <ul>
+                        <li><a href="#">Become a Provider</a></li>
+                        <li><a href="#">Provider App</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <div class="logo-icon" style="background: var(--primary); color: white;">⚡</div>
+                    EasyLife
+                </div>
+                <div class="footer-copy">© 2026 EasyLife Pakistan. All rights reserved.</div>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">🐦</a>
+                    <a href="#">💼</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-cta">
+        <a href="#" class="btn btn-primary">Get the App</a>
+        <a href="#" class="btn btn-outline" style="color: var(--text-dark); border-color: var(--border);">Request Service</a>
+    </div>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate').forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 0.6s ease-out";
+            observer.observe(el);
+        });
+
+        document.querySelector('.mobile-menu').addEventListener('click', () => {
+            alert('Mobile menu - In production this would toggle a menu');
+        });
+    </script>
+</body>
+</html>
