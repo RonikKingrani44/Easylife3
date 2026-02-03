@@ -54,32 +54,40 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--white);
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            flex-shrink: 0;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background: var(--white);
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 2rem;
         }
 
         .nav-links {
-            display: none;
-            gap: 2rem;
+            display: flex;
+            gap: 1.5rem;
             list-style: none;
         }
 
@@ -87,18 +95,78 @@
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: opacity 0.3s;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
             opacity: 0.8;
         }
-
-        .nav-cta {
+        .mobile-menu-btn {
             display: flex;
-            gap: 1rem;
             align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1.3rem;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            z-index: 9999;
+            padding: 1.5rem;
+            flex-direction: column;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-nav-close {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
         .btn {
@@ -147,14 +215,6 @@
             color: var(--primary);
             border-color: var(--white);
         }
-
-        .mobile-menu {
-            display: block;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             color: var(--white);
@@ -186,7 +246,7 @@
         }
 
         .hero-content h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 1rem;
@@ -194,10 +254,11 @@
         }
 
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.95;
             margin-bottom: 2rem;
             max-width: 500px;
+            line-height: 1.6;
         }
 
         .hero-cta {
@@ -211,24 +272,25 @@
             text-align: center;
             padding: 1rem 2rem;
             font-size: 1rem;
+            width: 100%;
         }
 
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1rem;
             margin-top: 2rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.3);
         }
 
         .stat-item h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
         }
 
         .stat-item p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             opacity: 0.9;
             margin: 0;
         }
@@ -254,7 +316,7 @@
         }
         .mission-section {
             background: var(--bg-light);
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem;
         }
 
         .mission-container {
@@ -262,7 +324,7 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 2rem;
             align-items: center;
         }
 
@@ -270,15 +332,15 @@
             display: inline-block;
             background: rgba(255, 107, 53, 0.1);
             color: var(--primary);
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 1rem;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
         .mission-content h2 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--text-dark);
             margin-bottom: 1.5rem;
             line-height: 1.3;
@@ -291,18 +353,18 @@
 
         .mission-quote {
             border-left: 4px solid var(--primary);
-            padding-left: 1.5rem;
-            margin-bottom: 2rem;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
             color: var(--text-medium);
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
         .mission-features {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         .mission-feature-item {
@@ -311,32 +373,34 @@
             gap: 0.8rem;
             color: var(--text-dark);
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .mission-check {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             background: rgba(255, 107, 53, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            flex-shrink: 0;
         }
 
         .mission-stats {
             background: var(--white);
-            border-radius: 24px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 1.5rem;
             box-shadow: 0 10px 40px rgba(0,0,0,0.05);
         }
 
         .mission-emergency {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
-            padding: 1.5rem;
-            border-radius: 16px;
+            padding: 1.2rem;
+            border-radius: 14px;
             margin-bottom: 1.5rem;
         }
 
@@ -344,12 +408,12 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 0.5rem;
         }
 
         .mission-emergency p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.9;
             line-height: 1.5;
         }
@@ -357,35 +421,35 @@
         .mission-stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            gap: 1.2rem;
             text-align: center;
         }
 
         .mission-stat h4 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--primary);
             font-weight: 800;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         .mission-stat p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-light);
             font-weight: 500;
         }
         .services-section {
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .section-header h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
             font-weight: 700;
@@ -393,7 +457,7 @@
 
         .section-header p {
             color: var(--text-light);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .services-grid {
@@ -404,7 +468,7 @@
 
         .service-card {
             background: var(--card-bg);
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(255, 107, 53, 0.08);
             transition: all 0.3s;
@@ -419,7 +483,7 @@
 
         .service-image {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
             background: linear-gradient(135deg, var(--bg-light) 0%, var(--border) 100%);
         }
@@ -429,8 +493,8 @@
         }
 
         .service-icon {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-radius: 12px;
             display: flex;
@@ -443,15 +507,16 @@
         }
 
         .service-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--text-dark);
         }
 
         .service-card p {
             color: var(--text-light);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
+            line-height: 1.5;
         }
 
         .service-link {
@@ -461,16 +526,15 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .service-link:hover {
             gap: 0.8rem;
         }
-
         .how-it-works {
             background: var(--bg-light);
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem;
         }
 
         .steps-container {
@@ -482,13 +546,13 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2.5rem;
         }
 
         .step-card {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
             text-align: center;
             position: relative;
             border: 1px solid var(--border);
@@ -497,34 +561,34 @@
 
         .step-number {
             position: absolute;
-            top: -20px;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.2rem;
-            border: 4px solid var(--bg-light);
+            font-size: 1.1rem;
+            border: 3px solid var(--bg-light);
             box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
         }
 
         .step-icon {
             width: 100%;
-            height: 150px;
+            height: 140px;
             margin: 1rem 0;
-            border-radius: 16px;
+            border-radius: 12px;
             object-fit: cover;
             background: var(--bg-light);
         }
 
         .step-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 0.5rem;
             color: var(--text-dark);
         }
@@ -534,7 +598,7 @@
             font-size: 0.9rem;
         }
         .safety-section {
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -542,25 +606,25 @@
         .safety-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .safety-content h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--text-dark);
         }
 
         .safety-content > p {
             color: var(--text-light);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
 
         .safety-features {
             display: grid;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .safety-item {
@@ -569,7 +633,7 @@
             align-items: flex-start;
             padding: 1rem;
             background: var(--white);
-            border-radius: 16px;
+            border-radius: 14px;
             border: 1px solid var(--border);
             transition: all 0.3s;
         }
@@ -580,8 +644,8 @@
         }
 
         .safety-icon {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
             border-radius: 12px;
             display: flex;
@@ -592,14 +656,14 @@
         }
 
         .safety-text h4 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 0.3rem;
             color: var(--text-dark);
         }
 
         .safety-text p {
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .safety-visual {
@@ -610,15 +674,16 @@
 
         .safety-image {
             width: 100%;
-            max-width: 450px;
-            border-radius: 30px;
+            max-width: 400px;
+            border-radius: 24px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.15);
             object-fit: cover;
         }
+
         .app-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem;
             position: relative;
             overflow: hidden;
         }
@@ -639,21 +704,21 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 2.5rem;
             align-items: center;
             position: relative;
             z-index: 1;
         }
 
         .app-content h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
 
         .app-content p {
             opacity: 0.95;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
 
         .app-buttons {
@@ -665,13 +730,13 @@
         .app-btn {
             background: var(--text-dark);
             color: var(--white);
-            padding: 1rem 1.8rem;
+            padding: 0.9rem 1.5rem;
             border-radius: 12px;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
@@ -685,37 +750,36 @@
             display: flex;
             justify-content: center;
         }
-
         .easylife-app-screen {
             width: 100%;
-            max-width: 300px;
+            max-width: 280px;
             background: var(--white);
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            border: 10px solid #1a1a1a;
+            border: 8px solid #1a1a1a;
             margin: 0 auto;
         }
 
         .app-header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 1.5rem;
+            padding: 1.5rem 1rem;
             color: var(--white);
             text-align: center;
         }
 
         .app-logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .app-subtitle {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             opacity: 0.9;
         }
 
@@ -728,10 +792,10 @@
 
         .app-service-item {
             background: var(--bg-light);
-            padding: 1rem;
+            padding: 1rem 0.5rem;
             border-radius: 12px;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-dark);
             border: 1px solid var(--border);
         }
@@ -750,7 +814,7 @@
             font-size: 1.2rem;
         }
         .partners-section {
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem;
             background: var(--bg-light);
         }
 
@@ -762,13 +826,13 @@
         .partners-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
         }
 
         .partner-card {
             background: var(--white);
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             border: 1px solid var(--border);
@@ -782,36 +846,36 @@
 
         .partner-image {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
             background: linear-gradient(135deg, var(--bg-light) 0%, var(--border) 100%);
         }
 
         .partner-content {
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .partner-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--text-dark);
         }
 
         .partner-content p {
             color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
         }
 
         .partner-btn {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
-            padding: 0.9rem 1.8rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
             display: inline-block;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
@@ -823,7 +887,7 @@
         .cities-section {
             background: var(--text-dark);
             color: var(--white);
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem;
         }
 
         .cities-container {
@@ -834,16 +898,16 @@
         .cities-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            gap: 0.8rem;
             margin-top: 2rem;
         }
 
         .city-item {
-            padding: 1rem;
+            padding: 0.9rem;
             background: rgba(255,255,255,0.05);
-            border-radius: 12px;
+            border-radius: 10px;
             text-align: center;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.3s;
             cursor: pointer;
             border: 1px solid rgba(255,255,255,0.1);
@@ -857,7 +921,7 @@
         footer {
             background: #1a1512;
             color: var(--white);
-            padding: 4rem 1.5rem 2rem;
+            padding: 3rem 1.5rem 2rem;
         }
 
         .footer-container {
@@ -869,7 +933,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .footer-col h4 {
@@ -908,7 +972,7 @@
         }
 
         .footer-logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             display: flex;
             align-items: center;
@@ -917,7 +981,7 @@
 
         .footer-copy {
             color: rgba(255,255,255,0.5);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         .social-links {
@@ -926,8 +990,8 @@
         }
 
         .social-links a {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: rgba(255,255,255,0.1);
             display: flex;
@@ -936,7 +1000,7 @@
             color: var(--white);
             text-decoration: none;
             transition: all 0.3s;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .social-links a:hover {
@@ -954,22 +1018,23 @@
             display: flex;
             gap: 1rem;
             z-index: 999;
-          
+           
         }
 
         .floating-cta .btn {
             flex: 1;
             text-align: center;
             padding: 0.9rem;
+            font-size: 0.9rem;
         }
 
         @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
+            .mobile-menu-btn {
+                display: none;
             }
 
-            .mobile-menu {
-                display: none;
+            .desktop-nav {
+                display: flex;
             }
 
             .hero-container {
@@ -977,15 +1042,35 @@
             }
 
             .hero-content h1 {
-                font-size: 3.2rem;
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
             }
 
             .hero-cta {
                 flex-direction: row;
             }
 
+            .hero-cta .btn {
+                width: auto;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-item h3 {
+                font-size: 1.8rem;
+            }
+
             .mission-container {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            .mission-content h2 {
+                font-size: 2.2rem;
             }
 
             .services-grid {
@@ -1020,9 +1105,31 @@
                 display: none;
             }
         }
+
         @media (min-width: 1024px) {
+            .nav-container {
+                padding: 0 2rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+
             .hero-content h1 {
-                font-size: 3.8rem;
+                font-size: 3.2rem;
             }
 
             .services-grid {
@@ -1044,6 +1151,31 @@
             .hero-visual {
                 display: block;
             }
+
+            .mission-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .service-image {
+                height: 200px;
+            }
+
+            .partner-image {
+                height: 220px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .hero-content h1 {
+                font-size: 3.8rem;
+            }
+
+            .mission-content h2 {
+                font-size: 2.8rem;
+            }
         }
         @keyframes fadeInUp {
             from {
@@ -1059,6 +1191,7 @@
         .animate {
             animation: fadeInUp 0.6s ease-out;
         }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -1078,27 +1211,42 @@
     </style>
 </head>
 <body>
-
     <nav>
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-icon">⚡</div>
                 EasyLife
             </div>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#how-it-works">How it Works</a></li>
-                <li><a href="#safety">Safety</a></li>
-                <li><a href="#partners">Partners</a></li>
-                <li><a href="#cities">Cities</a></li>
-            </ul>
-            <div class="nav-cta">
-                <a href="#" class="btn btn-outline">Log in</a>
-                <a href="#" class="btn btn-white">Get the App</a>
+
+            <div class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">How it Works</a></li>
+                    <li><a href="#safety">Safety</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#cities">Cities</a></li>
+                </ul>
             </div>
-            <div class="mobile-menu">☰</div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileNav()">☰</button>
         </div>
     </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                EasyLife
+            </div>
+            <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#services" onclick="toggleMobileNav()">Services</a></li>
+            <li><a href="#how-it-works" onclick="toggleMobileNav()">How it Works</a></li>
+            <li><a href="#safety" onclick="toggleMobileNav()">Safety</a></li>
+            <li><a href="#partners" onclick="toggleMobileNav()">Partners</a></li>
+            <li><a href="#cities" onclick="toggleMobileNav()">Cities</a></li>
+        </ul>
+    </div>
 
     <section class="hero">
         <div class="hero-container">
@@ -1109,20 +1257,7 @@
                     <a href="#" class="btn btn-white">Get the App</a>
                     <a href="#" class="btn btn-outline">Request Service</a>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <h3>500+</h3>
-                        <p>Verified Experts</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>50k+</h3>
-                        <p>Services Done</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>4.9</h3>
-                        <p>User Rating</p>
-                    </div>
-                </div>
+
             </div>
             <div class="hero-visual">
                 <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=800&fit=crop" alt="Mechanic working on bike" class="hero-image">
@@ -1257,7 +1392,6 @@
             </div>
         </div>
     </section>
-
     <section class="safety-section" id="safety">
         <div class="safety-grid">
             <div class="safety-content animate">
@@ -1299,7 +1433,6 @@
             </div>
         </div>
     </section>
-
     <section class="app-section">
         <div class="app-container">
             <div class="app-content animate">
@@ -1323,7 +1456,6 @@
                 </div>
             </div>
             <div class="app-visual">
-             
                 <div class="easylife-app-screen">
                     <div class="app-header">
                         <div class="app-logo">
@@ -1465,22 +1597,21 @@
                     EasyLife
                 </div>
                 <div class="footer-copy">© 2026 EasyLife Pakistan. All rights reserved.</div>
-                <div class="social-links">
-                    <a href="#">📘</a>
-                    <a href="#">📸</a>
-                    <a href="#">🐦</a>
-                    <a href="#">💼</a>
-                </div>
             </div>
         </div>
     </footer>
-
     <div class="floating-cta">
         <a href="#" class="btn btn-primary">Get the App</a>
         <a href="#" class="btn btn-outline" style="color: var(--text-dark); border-color: var(--border);">Request Service</a>
     </div>
 
     <script>
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        }
+
         const observerOptions = {
             threshold: 0.1,
             rootMargin: "0px 0px -50px 0px"
@@ -1500,10 +1631,6 @@
             el.style.transform = "translateY(30px)";
             el.style.transition = "all 0.6s ease-out";
             observer.observe(el);
-        });
-
-        document.querySelector('.mobile-menu').addEventListener('click', () => {
-            alert('Mobile menu - In production this would toggle a menu');
         });
     </script>
 </body>
